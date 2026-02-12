@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- TensorFlow.js and Teachable Machine -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Farmer Dashboard</h1>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="farmer.html">Farmer Dashboard</a> |
+      <a href="buyer.html">Buyer Dashboard</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ADD NEW PRODUCT SECTION -->
+    <section>
+      <h2>Add New Product</h2>
+
+      <div class="input-group">
+        <input type="text" id="name" placeholder="Product Name">
+        <button type="button" onclick="startVoice('name')">🎤</button>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="category" placeholder="Category">
+        <button type="button" onclick="startVoice('category')">🎤</button>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="price" placeholder="Selling Price">
+        <button type="button" onclick="startVoiceNumber('price')">🎤</button>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="wholesale_price" placeholder="Wholesale Price">
+        <button type="button" onclick="startVoiceNumber('wholesale_price')">🎤</button>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="quantity" placeholder="Quantity">
+        <button type="button" onclick="startVoiceNumber('quantity')">🎤</button>
+      </div>
+
+      <input type="text" id="image_url" placeholder="Image URL">
+      <button onclick="addProduct()">Add Product</button>
+    </section>
+
+    <!-- MY PRODUCTS TABLE -->
+    <section>
+      <h2>My Products</h2>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Wholesale</th>
+            <th>Farmer Profit</th>
+            <th>Middleman Profit</th>
+            <th>Quantity</th>
+            <th>Image</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="productTable"></tbody>
+      </table>
+    </section>
+
+    <!-- CROP HEALTH DETECTION -->
+    <section>
+      <h2>Crop Health Detection</h2>
+      <input type="file" id="cropImage" accept="image/*">
+      <button onclick="analyzeCrop()">Analyze Crop</button>
+      <div id="cropResult" style="margin-top:15px; font-weight:bold;"></div>
+      <canvas id="cropCanvas" style="display:none;"></canvas>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Agri Marketplace | Hackathon Demo</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+       
+
